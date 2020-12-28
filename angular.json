@@ -122,6 +122,46 @@
           }
         }
       }
+    },
+    "ad-vertical-menu": {
+      "projectType": "library",
+      "root": "projects/ad-vertical-menu",
+      "sourceRoot": "projects/ad-vertical-menu/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ad-vertical-menu/tsconfig.lib.json",
+            "project": "projects/ad-vertical-menu/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ad-vertical-menu/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ad-vertical-menu/src/test.ts",
+            "tsConfig": "projects/ad-vertical-menu/tsconfig.spec.json",
+            "karmaConfig": "projects/ad-vertical-menu/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ad-vertical-menu/tsconfig.lib.json",
+              "projects/ad-vertical-menu/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ad-vertical-menu-workspace"
