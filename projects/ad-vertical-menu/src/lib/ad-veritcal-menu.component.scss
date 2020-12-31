@@ -1,0 +1,50 @@
+@import './scss/utility/utility.mixins.scss';
+@import './scss/dashboard-main-sidenav-item.mixins.scss';
+@import './scss/dashboard-sidenav.mixins.scss';
+@import './scss/dashboard.variables.scss';
+
+.ad-main-sidenav-menu{
+  @include ad-sidenav-item-inner-content();
+  @include ad-main-sidenav-menu();
+  @include ad-main-sidenav-padding();
+  @include ad-main-sidenav-color-by-depth();
+  &.ad-icon-right{
+   @include ad-icon-right();
+  }
+  &.ad-expand-icon-left{
+   @include ad-expand-icon-left();
+  }
+  &.ad-indent-right{
+   @include ad-indent-right();
+  }
+  &.ad-no-indent{
+   @include ad-no-indent();
+  }
+
+  // .ad-nav-menu-item{
+   // @include ad-nav-menu-item();
+
+   .ad-main-sidenav-menu-item{//mat-list-item
+    @include ad-main-sidenav-menu-item();
+
+    &.ad-sidenav-item-selected{
+     @include ad-sidenav-item-selected();
+    }
+    &.expanded{
+     @include ad-main-sidenav-item-expanded();
+    }
+
+    .ad-menu-item-content{
+     @include ad-sidenav-item-content();
+
+     &.ad-menu-content-nested{
+     }
+
+    }
+   }
+  // }
+ }
+/// important class levels
+
+
+

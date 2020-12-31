@@ -1,0 +1,61 @@
+@import '~@angular/material/theming';
+
+$app-sidnav-border-width: 2px;
+$app-sidnav-border-color: #888787;
+$app-sidnav-toolbar-height: 44px;
+$material-primary: mat-palette($mat-blue, 800);
+$material-accent:  mat-palette($mat-orange, 600, 100, 800);
+$material-warn:    mat-palette($mat-red, 600);
+$material-theme: mat-light-theme($material-primary, $material-accent, $material-warn);
+
+@function adDashboardColor() {
+  //defaults
+  $dashboard-demo-sidenav-background-color: #eff2f5;
+
+  $dashboard-sidenav-menu-item-background-color: #ffffff;
+  $material-foreground-data: map-get($material-theme, 'foreground');
+  $material-background-data: map-get($material-theme, 'background');
+  $dashboard-sidenav-background-color: map_get($material-background-data, 'card');//#fafafa;
+  // $dashboard-sidenav-background-color: #a4a2fa;
+
+  $dashboard-foreground-text-color: map-get($material-foreground-data, 'text');
+  $material-background-color: map-get($material-background-data, 'background');
+  $dashboard-background: #eeecec;
+  $dashboard-content-background: transparent;//$material-background-color;
+  $is-dark: map-get($material-theme, 'is-dark');
+
+  @if map-get($material-theme, 'is-dark') {
+    // $dashboard-sidenav-background-color: darken($material-background-color, 50)
+  } @else {
+    $dashboard-content-background: transparent;//darken($material-background-color, .5);
+  }
+
+
+
+  $data:(
+    demo-sidenav-background: $dashboard-demo-sidenav-background-color,
+    dashboard-background: $dashboard-background,
+		content-background: $dashboard-content-background,
+    text: $dashboard-foreground-text-color,
+    secondary-text:map-get($material-foreground-data, 'secondary-text'),
+    sidenav-background: $dashboard-sidenav-background-color,
+    sidenav-menu-item-background: $dashboard-sidenav-background-color,
+    primary: map-get(map-get($material-theme, 'primary'), 'default'),
+    accent: map-get(map-get($material-theme, 'accent'), 'default'),
+    warn: map-get(map-get($material-theme, 'warn'), 'default'),
+    is-dark: $is-dark,
+    $material-primary: $material-primary,
+    $material-accent: $material-accent,
+    $material-warn:    $material-warn,
+    $material-theme: $material-theme
+	);
+  @return $data;
+}
+@function adDashboardLayout() {
+  $data:(
+
+	);
+  @return $data;
+}
+
+

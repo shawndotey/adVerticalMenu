@@ -6,6 +6,9 @@
     "@angular/core": "^11.0.5"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "@fortawesome/angular-fontawesome": "^0.8.1",
+    "@angular/material": "^11.0.2",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1"
   }
 }

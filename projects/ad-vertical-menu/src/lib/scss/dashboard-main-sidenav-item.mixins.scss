@@ -1,0 +1,197 @@
+@import './dashboard.variables.scss';
+$dashboardColor: adDashboardColor();
+/// menu depth
+// $arrow-side:'right';
+// $padding-depth-side:'left';
+$arrow-margin:9px;
+$title-margin:9px;
+$indention-padding:15px;
+$backgroundColor: map-get($dashboardColor, 'sidenav-menu-item-background');
+$multiplier:3;
+$is-dark: map-get($dashboardColor, 'is-dark');
+
+
+@mixin ad-main-sidenav-item-expanded(){
+ .ad-sidenav-expand-icon{
+   .ng-fa-icon svg{
+     @include transform(rotate(-90deg));
+   }
+ }
+}
+@mixin ad-main-sidenav-padding(){
+  @include ad-tree-depth-builder() using (
+    $level,
+    $last-cycle,
+    $cycle,
+    $next-cycle,
+    $total-cycle-loops
+  ){
+   .ad-nav-menu-item-level-#{$level} {
+     .ad-sidenav-item-padder{
+       width:$level * $indention-padding;
+     }
+   }
+  }
+
+}
+@mixin ad-main-sidenav-color-by-depth(){
+  @include ad-tree-depth-builder(5, 5) using (
+    $level,
+    $last-cycle,
+    $cycle,
+    $next-cycle,
+    $total-cycle-loops
+  ){
+    .ad-nav-menu-item-level-#{$level} {
+      $last-color: adColorLightenOrDarkenByTheme($is-dark, $backgroundColor, $last-cycle * $multiplier);
+      $current-color: adColorLightenOrDarkenByTheme($is-dark, $backgroundColor, $cycle * $multiplier);
+      $next-color: adColorLightenOrDarkenByTheme($is-dark, $backgroundColor, $next-cycle * $multiplier);
+
+      .ad-sidenav-item-line{
+        background-color: $last-color;
+      }
+      .ad-menu-item-content {
+        background-color: $current-color;
+      }
+      .expanded{
+        // border-top: solid 12px;
+        // // border-left: solid 4px;
+        // // border-right: solid 4px;
+        // border-color: transparent;
+        .ad-menu-item-content {
+          background-color: $next-color;
+        }
+      }
+      .ad-sidenav-item-selected {
+        $background-color:adColorLightenOrDarkenByTheme($is-dark, $backgroundColor, 10);
+        background-color: $background-color;
+        $border-color:adColorLightenOrDarkenByTheme($is-dark ,$next-color, 30);
+        $border-color:adjust-color($border-color, $blue: 10);
+        border-top-color: $border-color;
+        border-left-color:transparent;
+        border-right-color:transparent;
+        border-bottom-color: $border-color;
+        .ad-sidenav-item-line{
+          background-color: $background-color;
+          border-top-color: $border-color;
+          border-bottom-color: $border-color;
+        }
+      }
+
+    }
+  };
+}
+
+@mixin ad-nav-menu-item(){
+
+
+
+
+
+}
+
+@mixin sidenav-item-selected-common() {
+ border-top-width: 4px;
+ border-bottom-width: 4px;
+ border-top-style: solid;
+ border-bottom-style: solid;
+}
+
+
+@mixin ad-sidenav-item-selected(){
+ @include sidenav-item-selected-common();
+ .ad-sidenav-item-line{
+   @include sidenav-item-selected-common();
+ }
+ font-style:italic;
+
+}
+
+@mixin ad-sidenav-item-inner-content(){
+  .ad-sidenav-menu-icon{
+    order: 10;
+    width: 32px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .ad-sidenav-item-padder{
+    height: 100%;
+    order: 20;
+  }
+  .ad-sidenav-item-line{
+    width:0px;
+    height: 100%;
+    order: 30;
+  }
+  .ad-sidenav-menu-title{
+    order: 40;
+   padding-left: 8px;
+   flex: 1 1 auto;
+   display: flex;
+  }
+
+  .ad-sidenav-expand-icon{
+    order: 50;
+    .ng-fa-icon svg{
+      transition: .1s ease-in-out;
+    }
+  }
+}
+
+
+
+@mixin ad-icon-right(){
+  .ad-sidenav-menu-icon{
+    order: 400;
+  }
+}
+
+@mixin ad-expand-icon-left(){
+  .ad-sidenav-expand-icon{
+    order: 5;
+    .ng-fa-icon svg{
+      @include transform(rotate(180deg));
+    }
+  }
+}
+
+@mixin ad-indent-right(){
+  .ad-sidenav-item-padder{
+    order: 200;
+  }
+  .menu-title-text{
+    margin-left: auto;
+  }
+}
+
+@mixin ad-no-indent(){
+  .ad-sidenav-item-padder{
+    width:0;
+  }
+}
+
+
+@mixin ad-sidenav-item-content(){
+ width:100%;
+ display: flex;
+ height: 100%;
+ align-items: center;
+ .menu-title-text{
+   padding-right:16px;
+ }
+}
+
+
+@mixin ad-main-sidenav-menu-item(){
+ width:100%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ &:focus{
+   background:transparent;
+ }
+ .mat-list-item-content{
+  flex: 1 1 auto;
+  padding:0;
+ }
+}

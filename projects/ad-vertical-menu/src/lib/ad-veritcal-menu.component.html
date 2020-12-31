@@ -1,0 +1,57 @@
+<p>
+    <mat-nav-list>
+        <ad-nav-menu
+          [dataSource]='adMenu.dataSource'
+          [treeControl]='adMenu.treeControl'
+          class="ad-main-sidenav-menu ad-expand-icon-left">
+
+          <mat-list-item
+            [ngClass]="['expandable', 'mat-list-item-level-'+menuNode.level, treeControl.isExpanded(menuNode) ? 'expanded' : '', 'ad-main-sidenav-menu-item']"
+            *ad-nav-nester="let menuNode=menuNode;let treeControl=treeControl;" [routerLink]="">
+            <div class="ad-menu-item-content ad-menu-content-nested">
+              <div class="ad-sidenav-item-padder">
+              </div>
+              <div class="ad-sidenav-item-line">
+              </div>
+              <div class="ad-sidenav-menu-icon">
+                <div>
+                  <fa-icon [icon]="menuNode.icon || defaultIcon"></fa-icon>
+                </div>
+              </div>
+              <div class="ad-sidenav-menu-title">
+                <span class="menu-title-text">{{menuNode.name}}</span>
+                <span *ngIf="menuNode.badge" [matBadge]="menuNode.badgeValue | async" matBadgePosition="after"></span>
+              </div>
+              <div class="ad-sidenav-menu-icon ad-sidenav-expand-icon">
+                <fa-icon [icon]="faChevronLeft"></fa-icon>
+              </div>
+            </div>
+
+          </mat-list-item>
+
+          <mat-list-item *ad-nav-item="let menuNode=menuNode;"
+            class="ad-main-sidenav-menu-item" (click)="navItemSelected(menuNode)"
+            [class.ad-sidenav-item-selected] = "isNodeSelected(menuNode)"
+            >
+            <div class="ad-menu-item-content">
+              <div class="ad-sidenav-item-padder">
+              </div>
+              <div class="ad-sidenav-item-line">
+              </div>
+              <div class="ad-sidenav-menu-icon">
+                <div>
+                  <fa-icon [icon]="menuNode.icon || defaultIcon"></fa-icon>
+                </div>
+              </div>
+              <div class="ad-sidenav-menu-title">
+                <span class="menu-title-text"> {{menuNode.name}}</span>
+                <span *ngIf="menuNode.badge && ((menuNode.badgeValue | async) !== '0') "
+                  [matBadge]="menuNode.badgeValue | async" matBadgePosition="after"></span>
+              </div>
+              <div class="ad-sidenav-menu-icon ad-sidenav-expand-icon">
+              </div>
+            </div>
+          </mat-list-item>
+        </ad-nav-menu>
+      </mat-nav-list>
+</p>

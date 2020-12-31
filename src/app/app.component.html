@@ -310,8 +310,11 @@
 </div>
 
 <div class="content" role="main">
-hi
-
+  <ad-veritcal-menu
+  [currentNode]="currentNodeMatchedToRouter"
+  (selectItem)="selectMainMenuItem($event)"
+  [adMenu]="mainMenu" >
+</ad-veritcal-menu>
 </div>
 
 
