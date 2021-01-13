@@ -16,9 +16,8 @@ import { AdMenuListBuilderService } from 'projects/ad-vertical-menu/src/lib/menu
 })
 export class AdMainMenuModule {
   constructor(
-    private mainMenuService:AdMainMenuService,
-    private adDashboardMainMenuService: AdMenuListBuilderService<MainMenu>
+    private mainMenuService:AdMainMenuService
     ){
-      this.adDashboardMainMenuService.addMenu(this.mainMenuService.menuList);
+      this.mainMenuService.buildMenu();
   }
 }

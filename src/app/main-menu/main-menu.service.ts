@@ -6,9 +6,8 @@ import { MainMenu } from 'projects/ad-vertical-menu/src/lib/model/dashboard-side
 @Injectable({
   providedIn: 'root'
 })
-export class AdMainMenuService extends AdMenuListBuilderService<MainMenu> {
-  constructor() {
-    super();
+export class AdMainMenuService {
+  constructor(private adMenuListBuilderService: AdMenuListBuilderService<MainMenu>) {
   }
   buildMenu() {
     const rawMenuList = [
@@ -18,6 +17,6 @@ export class AdMainMenuService extends AdMenuListBuilderService<MainMenu> {
         route: './home'
       }
     ];
-    this.addMenu(this.mapMenuListToClass(rawMenuList, MainMenu));
+    this.adMenuListBuilderService.addMenu(this.adMenuListBuilderService.mapMenuListToClass(rawMenuList, MainMenu));
   }
 }

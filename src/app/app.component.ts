@@ -29,18 +29,12 @@ export class AppComponent implements OnInit, AfterContentInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-
     this.mainMenu = this.mainMenuService.adMenu;
   }
-
-
-
-
   ngOnInit() {
     this.mainMenu.menuList$.subscribe((menuList) => {
       this.setCurrentNodeMatchedToRouter();
     });
-
   }
 
   syncMainSidenavToRoute() {

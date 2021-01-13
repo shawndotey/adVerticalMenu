@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
-export abstract class AdMenuListBuilderService<MenuType extends MenuModel> {
+export class AdMenuListBuilderService<MenuType extends MenuModel> {
   adMenu: AdMenu<MenuType> = new AdMenu<MenuType>();
   private _menuList: MenuType[] = null;
   get menuList(): MenuType[] {
@@ -17,10 +17,10 @@ export abstract class AdMenuListBuilderService<MenuType extends MenuModel> {
   }
   private resolveMenuList() {
     if ( this.isMenuListValid() || this._menuList.length === 0) {
-      this.buildMenu();
-      if ( this.isMenuListValid() ) {
-        throw Error('classes extending AdMenuListBuilderService must define property [menuList] in the [buildMenu()] method');
-      }
+      //this.buildMenu();
+      // if ( this.isMenuListValid() ) {
+         throw Error('classes extending AdMenuListBuilderService must define property [menuList] in the [buildMenu()] method');
+      // }
     }
   }
   private isMenuListValid() {
@@ -33,7 +33,7 @@ export abstract class AdMenuListBuilderService<MenuType extends MenuModel> {
     this._menuList = this._menuList.concat(menuList);
     this.adMenu.menuList = this._menuList;
   }
-  abstract buildMenu();
+  //buildMenu(){};
 
 
 
