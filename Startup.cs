@@ -21,6 +21,7 @@ namespace ad_vertical_menu_workspace
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+          
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -35,6 +36,8 @@ namespace ad_vertical_menu_workspace
                     await context.Response.WriteAsync("Hello World!");
                 });
             });
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }
