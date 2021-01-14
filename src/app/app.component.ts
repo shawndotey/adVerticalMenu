@@ -37,9 +37,7 @@ export class AppComponent implements OnInit, AfterContentInit {
     });
   }
 
-  syncMainSidenavToRoute() {
-    this.setCurrentNodeMatchedToRouter();
-  }
+ 
   setCurrentNodeMatchedToRouter() {
     this.currentNodeMatchedToRouter = this.menuRouting.getNodeMatchingRoute(this.router, this.mainMenu);
   }
