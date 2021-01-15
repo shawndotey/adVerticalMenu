@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdVerticalMenuModule } from 'projects/ad-vertical-menu/src/lib/ad-vertical-menu.module';
 import { AdMainMenuModule } from './main-menu/main-menu.module';
-import { AdDashboardRoutingModule } from './routing/dashboard-routing.module';
+import { AppRoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { AdDashboardRoutingModule } from './routing/dashboard-routing.module';
     RouterModule,
     AdVerticalMenuModule,
     AdMainMenuModule,
-    AdDashboardRoutingModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
