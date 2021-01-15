@@ -44,3 +44,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+obj/Debug/net5.0/ad-vertical-menu-workspace.csprojAssemblyReference.cache

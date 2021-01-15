@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdMainMenuService} from './main-menu.service';
-import { MainMenu } from 'projects/ad-vertical-menu/src/lib/model/dashboard-sidenav.MainMenu.model';
+import { MainMenu } from 'projects/ad-vertical-menu/src/lib/model/MainMenu.class';
 import { AdMenuListBuilderService } from 'projects/ad-vertical-menu/src/lib/menu-list/menu-list-builder.service';
 
 

@@ -2,10 +2,11 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { ADNotification } from './ADNotification.class';
 import { MenuModel } from '../menu-list/model/MenuModel.class';
+import { IMainMenu } from './IMainMenu.interface';
 
-export class MainMenu extends MenuModel {
-  constructor(init?: Partial<MenuModel>) {
-    super(init);
+export class MainMenu extends MenuModel implements IMainMenu{
+  constructor(init?: IMainMenu) {//Partial<MenuModel>
+    super(init as MainMenu);
     if (this.badge) {
       this.subscribeToBadge();
     }
