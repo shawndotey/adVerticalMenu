@@ -11,7 +11,7 @@ ad-veritcal-menu{
     @include ad-main-sidenav-padding();
     @include ad-main-sidenav-color-by-depth();
     &.ad-icon-right{
-    @include ad-icon-right();
+      @include ad-icon-right();
     }
     &.ad-expand-icon-left{
       @include ad-expand-icon-left();
