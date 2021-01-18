@@ -19,6 +19,10 @@
       "ad-vertical-menu": [
         "dist/ad-vertical-menu/ad-vertical-menu",
         "dist/ad-vertical-menu"
+      ],
+      "ad-theme": [
+        "dist/ad-theme/ad-theme",
+        "dist/ad-theme"
       ]
     }
   }

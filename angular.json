@@ -162,6 +162,46 @@
           }
         }
       }
+    },
+    "ad-theme": {
+      "projectType": "library",
+      "root": "projects/ad-theme",
+      "sourceRoot": "projects/ad-theme/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ad-theme/tsconfig.lib.json",
+            "project": "projects/ad-theme/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ad-theme/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ad-theme/src/test.ts",
+            "tsConfig": "projects/ad-theme/tsconfig.spec.json",
+            "karmaConfig": "projects/ad-theme/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ad-theme/tsconfig.lib.json",
+              "projects/ad-theme/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ad-vertical-menu-workspace"
