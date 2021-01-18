@@ -1,8 +1,5 @@
 @import './dashboard.variables.scss';
 $dashboardColor: adDashboardColor();
-/// menu depth
-// $arrow-side:'right';
-// $padding-depth-side:'left';
 $arrow-margin:9px;
 $title-margin:9px;
 $indention-padding:15px;
@@ -54,10 +51,7 @@ $is-dark: map-get($dashboardColor, 'is-dark');
         background-color: $current-color;
       }
       .expanded{
-        // border-top: solid 12px;
-        // // border-left: solid 4px;
-        // // border-right: solid 4px;
-        // border-color: transparent;
+
         .ad-menu-item-content {
           background-color: $next-color;
         }

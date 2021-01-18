@@ -1,0 +1,18 @@
+@import './dashboard-sidenav.mixins.scss';
+@import './dashboard-main-sidenav-item/dashboard-main-sidenav-item.mixins.scss';
+
+
+$dashboardColor: adDashboardColor();
+@mixin ad-main-sidenav-layout(){
+
+ .ad-main-sidenav-content{
+  @include ad-main-sidenav-content($dashboardColor);
+
+
+ }
+
+}
+
+
+
+
