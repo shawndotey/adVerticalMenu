@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { faBicycle, faBiking, faBus, faCar, faGlobe, faHome, faMap, faSitemap, faWalking } from '@fortawesome/free-solid-svg-icons';
-import { AdMenuListBuilderService } from 'projects/ad-vertical-menu/src/lib/menu-list/menu-list-builder.service';
+import { AdMenuControl } from 'projects/ad-vertical-menu/src/lib/ad-nav/shared/AdMenuControl.class';
 import { MainMenu } from 'projects/ad-vertical-menu/src/lib/model/MainMenu.class';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdMainMenuService {
-  constructor(private adMenuListBuilderService: AdMenuListBuilderService<MainMenu>) {
+  adMenuControl: AdMenuControl<MainMenu> = new AdMenuControl<MainMenu>();
+  constructor() {
+    this.buildMenu();
   }
   buildMenu() {
-    const rawMenuList = [
+    const menuList = [
       new MainMenu({
         name: 'Home',
         icon: faHome,
@@ -44,6 +46,6 @@ export class AdMainMenuService {
         ]
       })
     ];
-    this.adMenuListBuilderService.addMenu(rawMenuList);
+    this.adMenuControl.addMenu(menuList);
   }
 }

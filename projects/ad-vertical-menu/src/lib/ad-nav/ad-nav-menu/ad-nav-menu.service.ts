@@ -5,7 +5,7 @@ import { Observable, of as observableOf } from 'rxjs';
 import { MenuFlatNode } from '../shared/MenuFlatNode.class';
 import { MenuNode } from '../shared/MenuNode.class';
 import { CustomMatTreeControl } from '../shared/CustomMatTreeControl.class';
-import { MenuModel } from '../../menu-list/model/MenuModel.class';
+import { MenuModel } from '../../model/MenuModel.class';
 export { MenuNode, MenuFlatNode, MenuModel };
 
 @Injectable({

@@ -1,8 +1,8 @@
 import { Observable, BehaviorSubject } from 'rxjs';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { ADNotification } from './ADNotification.class';
-import { MenuModel } from '../menu-list/model/MenuModel.class';
 import { IMainMenu } from './IMainMenu.interface';
+import { MenuModel } from './MenuModel.class';
 
 export class MainMenu extends MenuModel implements IMainMenu{
   constructor(init?: IMainMenu) {//Partial<MenuModel>

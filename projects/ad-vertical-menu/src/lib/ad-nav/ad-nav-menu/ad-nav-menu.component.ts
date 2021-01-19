@@ -27,9 +27,7 @@ export class AdNavMenuComponent implements OnInit {
   // menuControl = new AdNavMenuControl();
   @Input() dataSource: MatTreeFlatDataSource<MenuNode, MenuFlatNode>;
   @Input() treeControl: CustomMatTreeControl<MenuFlatNode>;
-  menuData$: BehaviorSubject<MenuFlatNode[]> = new BehaviorSubject<
-    MenuFlatNode[]
-  >([]);
+  menuData$: BehaviorSubject<MenuFlatNode[]> = new BehaviorSubject<MenuFlatNode[]>([]);
 
   constructor() {}
 

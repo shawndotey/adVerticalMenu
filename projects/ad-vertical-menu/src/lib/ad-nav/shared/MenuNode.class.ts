@@ -1,4 +1,5 @@
-import { MenuModel } from "../../menu-list/model/MenuModel.class";
+import { MenuModel } from "../../model/MenuModel.class";
+
 export class MenuNode extends MenuModel {
   level: number;
   children?: MenuNode[] = [];

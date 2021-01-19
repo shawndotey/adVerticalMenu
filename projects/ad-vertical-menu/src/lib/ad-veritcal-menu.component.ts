@@ -5,7 +5,7 @@ import {
   faChevronDown
 } from '@fortawesome/free-solid-svg-icons';
 import { MenuFlatNode } from './ad-nav/shared/MenuFlatNode.class';
-import { AdMenu } from './menu-list/model/AdMenu.class';
+import { AdMenuControl } from './ad-nav/shared/AdMenuControl.class';
 import { MainMenu } from './model/MainMenu.class';
 import { ROUTE_NOT_SET } from './model/standard-values';
 
@@ -18,10 +18,9 @@ import { ROUTE_NOT_SET } from './model/standard-values';
 export class AdVeritcalMenuComponent implements OnChanges {
   @Output() selectItem = new EventEmitter<MenuFlatNode>();
   @Input() currentNode: MenuFlatNode;
-  @Input() adMenu: AdMenu<MainMenu>;
+  @Input() adMenuControl: AdMenuControl<MainMenu>;
 
-  constructor(
-  ) {}
+  constructor() {}
 
   defaultIcon = defaultIcon;
   faChevronLeft = faChevronLeft;
@@ -34,8 +33,8 @@ export class AdVeritcalMenuComponent implements OnChanges {
     this.expandCurrentNode();
   }
   expandCurrentNode() {
-    this.adMenu.treeControl.expand(this.currentNode);
-    this.adMenu.treeControl.expandParents(this.currentNode);
+    this.adMenuControl.treeControl.expand(this.currentNode);
+    this.adMenuControl.treeControl.expandParents(this.currentNode);
   }
   navItemSelected(menuNode: MenuFlatNode) {
     this.selectItem.emit(menuNode);

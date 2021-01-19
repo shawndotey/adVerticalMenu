@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { UrlTree, Router } from '@angular/router';
 import { MenuFlatNode } from '../ad-nav/shared/MenuFlatNode.class';
-import { AdMenu } from './model/AdMenu.class';
-import { MenuModel } from './model/MenuModel.class';
+import { MenuModel } from '../model/MenuModel.class';
+import { AdMenuControl } from '../ad-nav/shared/AdMenuControl.class';
 @Injectable({
   providedIn: 'root'
 })
 export class AdMenuListRoutingService<ListType> {
   /// Route methods
-  getNodeMatchingRoute(router: Router, adMenu: AdMenu<MenuModel>) {
+  getNodeMatchingRoute(router: Router, adMenu: AdMenuControl<MenuModel>) {
     return adMenu.treeControl.dataNodes.filter(node => this.doesNodeMatchRoute(node, router))[0];
   }
   doesNodeMatchRoute(node: MenuFlatNode, router: Router): boolean {

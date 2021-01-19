@@ -1,4 +1,4 @@
-import { MenuModel } from '../../menu-list/model/MenuModel.class';
+import { MenuModel } from '../../model/MenuModel.class';
 import { ROUTE_NOT_SET } from '../../model/standard-values';
 
 export class MenuFlatNode extends MenuModel {
