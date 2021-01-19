@@ -13,8 +13,6 @@ export { MenuNode, MenuFlatNode, MenuModel };
 })
 export class AdNavMenuTreeService {
   treeFlattener: MatTreeFlattener<MenuNode, MenuFlatNode>;
-
-  // get data(): MenuNode[] { return this.dataChange.value; }
   constructor() {
     this.initialize();
   }

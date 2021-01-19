@@ -12,8 +12,7 @@ export class AdMenuListBuilderService<MenuType extends MenuModel> {
     this.resolveMenuList();
     return this._menuList;
   }
-  constructor(
-    ) {
+  constructor() {
   }
   private resolveMenuList() {
     if ( this.isMenuListValid() || this._menuList.length === 0) {
@@ -30,15 +29,4 @@ export class AdMenuListBuilderService<MenuType extends MenuModel> {
     this._menuList = this._menuList.concat(menuList);
     this.adMenu.menuList = this._menuList;
   }
-  public mapMenuListToClass(menuList: any[], MenuConstructor): MenuType[] {
-    return menuList.map<MenuType>(menuItem => {
-      if (menuItem.children && menuItem.children.length) {
-        menuItem.children = this.mapMenuListToClass(menuItem.children as MenuType[], MenuConstructor);
-      }
-      const activatedItem: MenuType = new MenuConstructor(menuItem);
-      return activatedItem;
-    });
-  }
-
-
 }

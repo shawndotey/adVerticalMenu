@@ -16,7 +16,7 @@ import { filter} from 'rxjs/operators';
 export class AppComponent implements OnInit, AfterContentInit {
 
   @Output() closeMenu = new EventEmitter();
-  mainMenu: AdMenu<MainMenu> = new AdMenu<MainMenu>();
+  adMenu: AdMenu<MainMenu> = new AdMenu<MainMenu>();
   currentNodeMatchedToRouter: MenuFlatNode;
   defaultIcon = defaultIcon;
   faChevronLeft = faChevronLeft;
@@ -24,22 +24,22 @@ export class AppComponent implements OnInit, AfterContentInit {
   faCloseMenu = faTimesCircle;
 
   constructor(
-    private mainMenuService: AdMenuListBuilderService<MainMenu>,
+    private menuBuilderService: AdMenuListBuilderService<MainMenu>,
     private menuRouting: AdMenuListRoutingService<MainMenu>,
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-    this.mainMenu = this.mainMenuService.adMenu;
+    this.adMenu = this.menuBuilderService.adMenu;
   }
   ngOnInit() {
-    this.mainMenu.menuList$.subscribe((menuList) => {
+    this.adMenu.menuList$.subscribe((menuList) => {
       this.setCurrentNodeMatchedToRouter();
     });
   }
 
 
   setCurrentNodeMatchedToRouter() {
-    this.currentNodeMatchedToRouter = this.menuRouting.getNodeMatchingRoute(this.router, this.mainMenu);
+    this.currentNodeMatchedToRouter = this.menuRouting.getNodeMatchingRoute(this.router, this.adMenu);
   }
 
   ngAfterContentInit() {
