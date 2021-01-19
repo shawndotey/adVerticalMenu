@@ -1,7 +1,6 @@
 import { AfterContentInit, Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { faDotCircle as defaultIcon, faChevronDown, faChevronLeft, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-//import { AdDashboardMainMenuService } from 'projects/ad-vertical-menu/src/lib/dashboard-main-menu/dashboard-main-menu.service';
 import { MenuFlatNode } from 'projects/ad-vertical-menu/src/lib/ad-nav/shared/MenuFlatNode.class';
 import { AdMenuListBuilderService } from 'projects/ad-vertical-menu/src/lib/menu-list/menu-list-builder.service';
 import { AdMenuListRoutingService } from 'projects/ad-vertical-menu/src/lib/menu-list/menu-list-routing.service';
@@ -11,8 +10,7 @@ import { filter} from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  //encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./app.component.scss']
 
 })
 export class AppComponent implements OnInit, AfterContentInit {

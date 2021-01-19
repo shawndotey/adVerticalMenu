@@ -17,10 +17,7 @@ export class AdMenuListBuilderService<MenuType extends MenuModel> {
   }
   private resolveMenuList() {
     if ( this.isMenuListValid() || this._menuList.length === 0) {
-      //this.buildMenu();
-      // if ( this.isMenuListValid() ) {
-         throw Error('classes extending AdMenuListBuilderService must define property [menuList] in the [buildMenu()] method');
-      // }
+         throw Error('Must define property [menuList] in the [buildMenu()] method');
     }
   }
   private isMenuListValid() {
@@ -33,10 +30,6 @@ export class AdMenuListBuilderService<MenuType extends MenuModel> {
     this._menuList = this._menuList.concat(menuList);
     this.adMenu.menuList = this._menuList;
   }
-  //buildMenu(){};
-
-
-
   public mapMenuListToClass(menuList: any[], MenuConstructor): MenuType[] {
     return menuList.map<MenuType>(menuItem => {
       if (menuItem.children && menuItem.children.length) {
