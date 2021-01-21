@@ -3,7 +3,7 @@
 @import 'ad-theme/src/lib/scss/dashboard-sidenav.mixins.scss';
 @import 'ad-theme/src/lib/scss/dashboard.variables.scss';
 
-// need to refine to only 
+// need to refine to only MatListModule, MatBadgeModule
 @include angular-material-theme($material-theme);
 
 ad-veritcal-menu{
