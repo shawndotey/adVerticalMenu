@@ -20,7 +20,7 @@
               </div>
               <div class="ad-sidenav-menu-title">
                 <span class="menu-title-text">{{menuNode.name}}</span>
-                <span *ngIf="menuNode.badge" [matBadge]="menuNode.badgeValue | async" matBadgePosition="after"></span>
+                <span *ngIf="menuNode.badge" [matBadge]="menuNode.badgeCount | async" matBadgePosition="after"></span>
               </div>
               <div class="ad-sidenav-menu-icon ad-sidenav-expand-icon">
                 <fa-icon [icon]="faChevronLeft"></fa-icon>
@@ -44,9 +44,9 @@
                 </div>
               </div>
               <div class="ad-sidenav-menu-title">
+                <!--  -->
                 <span class="menu-title-text"> {{menuNode.name}}</span>
-                <span *ngIf="menuNode.badge && ((menuNode.badgeValue | async) !== '0') "
-                  [matBadge]="menuNode.badgeValue | async" matBadgePosition="after"></span>
+                <span *ngIf="isBadgeDisplayable(menuNode)" [matBadge]="menuNode.badgeValue" matBadgePosition="after"></span>
               </div>
               <div class="ad-sidenav-menu-icon ad-sidenav-expand-icon">
               </div>

@@ -5,8 +5,11 @@ import {
   Input,
   ContentChild,
   ContentChildren,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  ViewEncapsulation,
 } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { MatTreeFlatDataSource } from '@angular/material/tree';
 import {
   MenuNode
@@ -20,15 +23,17 @@ import { CustomMatTreeControl } from '../shared/CustomMatTreeControl.class';
   selector: 'ad-nav-menu',
   templateUrl: './ad-nav-menu.component.html',
   styleUrls: ['./ad-nav-menu.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdNavMenuComponent implements OnInit {
+export class AdNavMenuComponent implements OnInit, OnDestroy{
   @ContentChild(AdNavNesterDirective, {static: true})  nesterTemplate;
   @ContentChild(AdNavItemDirective, {static: true})  menuItemTemplate;
   // menuControl = new AdNavMenuControl();
   @Input() dataSource: MatTreeFlatDataSource<MenuNode, MenuFlatNode>;
   @Input() treeControl: CustomMatTreeControl<MenuFlatNode>;
   menuData$: BehaviorSubject<MenuFlatNode[]> = new BehaviorSubject<MenuFlatNode[]>([]);
-
+  _dataSourceFlattenedData: Subscription;
   constructor() {}
 
   @ContentChildren(RouterLink, {descendants: true}) linkRefs: RouterLink[];
@@ -38,7 +43,7 @@ export class AdNavMenuComponent implements OnInit {
   }
 
   subscribeData() {
-    this.dataSource._flattenedData.subscribe(flatData => {
+    this._dataSourceFlattenedData = this.dataSource._flattenedData.subscribe(flatData => {
       // Material's FlatTreeControl does not have an emmiter to tell you when it's [dataNodes]
       // are updated so we have to do it this way to ensure FlatTreeControl has had a cycle to update
       setTimeout(() => {
@@ -54,4 +59,11 @@ export class AdNavMenuComponent implements OnInit {
   isNodeSelected(menuNode: MenuFlatNode): boolean {
     return this.treeControl.expansionModel.isSelected(menuNode);
   }
+  ngOnDestroy(){
+    this.unsubscribeData();
+  }
+  unsubscribeData(){
+    this._dataSourceFlattenedData.unsubscribe();
+  }
+
 }

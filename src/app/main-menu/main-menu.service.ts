@@ -1,6 +1,8 @@
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { faBicycle, faBiking, faBus, faCar, faGlobe, faHome, faMap, faSitemap, faWalking } from '@fortawesome/free-solid-svg-icons';
 import { AdMenuControl } from 'projects/ad-vertical-menu/src/lib/ad-nav/shared/AdMenuControl.class';
+import { ADNotification } from 'projects/ad-vertical-menu/src/lib/model/ADNotification.class';
 import { MainMenu } from 'projects/ad-vertical-menu/src/lib/model/MainMenu.class';
 
 @Injectable({
@@ -12,11 +14,17 @@ export class AdMainMenuService {
     this.buildMenu();
   }
   buildMenu() {
+    const mockNotifications = [];
+    for (let i = 0; i < 5; i++){
+      mockNotifications.push(new ADNotification())
+    }
+    const homeNotificationList = new BehaviorSubject<ADNotification[]>(mockNotifications);
     const menuList = [
       new MainMenu({
         name: 'Home',
         icon: faHome,
-        route: './home'
+        route: './home',
+        badgeList$: homeNotificationList
       }),
       new MainMenu({
         name: 'Transportation',

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input, EventEmitter, Output, OnChanges } from '@angular/core';
+import { Component, ViewEncapsulation, Input, EventEmitter, Output, OnChanges, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import {
   faDotCircle as defaultIcon,
   faChevronLeft,
@@ -13,9 +13,10 @@ import { ROUTE_NOT_SET } from './model/standard-values';
   selector: 'ad-veritcal-menu',
   templateUrl: './ad-veritcal-menu.component.html',
   styleUrls: ['./ad-veritcal-menu.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdVeritcalMenuComponent implements OnChanges {
+export class AdVeritcalMenuComponent implements OnChanges, OnDestroy {
   @Output() selectItem = new EventEmitter<MenuFlatNode>();
   @Input() currentNode: MenuFlatNode;
   @Input() adMenuControl: AdMenuControl<MainMenu>;
@@ -44,5 +45,16 @@ export class AdVeritcalMenuComponent implements OnChanges {
   }
   isNodeSelected(menuNode: MenuFlatNode) {
     return (menuNode === this.currentNode);
+  }
+  isBadgeDisplayable(menuNode: MainMenu){
+    if(menuNode.badgeValue && menuNode.badgeValue !== '0'){
+      return true;
+    }
+    return false;
+  }
+  ngOnDestroy(){
+    this.adMenuControl.menuList.forEach(menuItem=>{
+      menuItem.unsubscribeFromBadgeAsNeeded();
+    })
   }
 }
