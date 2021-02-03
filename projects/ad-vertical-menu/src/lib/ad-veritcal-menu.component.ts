@@ -5,7 +5,7 @@ import {
   faChevronDown
 } from '@fortawesome/free-solid-svg-icons';
 import { MenuFlatNode } from './ad-nav/shared/MenuFlatNode.class';
-import { AdMenuControl } from './ad-nav/shared/AdMenuControl.class';
+import { AdMenu } from './menu-list/model/AdMenu.class';
 import { MainMenu } from './model/MainMenu.class';
 import { ROUTE_NOT_SET } from './model/standard-values';
 

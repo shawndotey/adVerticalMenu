@@ -8,5 +8,5 @@ export interface IMainMenu {
   route?: string;
   icon?: IconDefinition;
   children?: MainMenu[];
-  badgeList$?: Observable<ADNotification[]>;
+  badge?: Observable<ADNotification[]>;
 }
