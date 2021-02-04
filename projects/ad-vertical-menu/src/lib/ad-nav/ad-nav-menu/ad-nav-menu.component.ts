@@ -54,7 +54,7 @@ export class AdNavMenuComponent implements OnInit, OnDestroy{
   }
 
   isMenuExpandable(_: number, _nodeData: MenuFlatNode) {
-    return _nodeData.isExpandable;
+    return _nodeData?.isExpandable;
   }
   isNodeSelected(menuNode: MenuFlatNode): boolean {
     return this.treeControl.expansionModel.isSelected(menuNode);
@@ -63,7 +63,9 @@ export class AdNavMenuComponent implements OnInit, OnDestroy{
     this.unsubscribeData();
   }
   unsubscribeData(){
-    this._dataSourceFlattenedData.unsubscribe();
+    if(this._dataSourceFlattenedData){
+      this._dataSourceFlattenedData.unsubscribe();
+    }
   }
 
 }

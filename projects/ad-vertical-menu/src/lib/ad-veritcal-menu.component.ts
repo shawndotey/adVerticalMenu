@@ -53,7 +53,7 @@ export class AdVeritcalMenuComponent implements OnChanges, OnDestroy {
     return false;
   }
   ngOnDestroy(){
-    this.adMenuControl.menuList.forEach(menuItem=>{
+    this.adMenuControl.menuList?.forEach(menuItem=>{
       menuItem.unsubscribeFromBadgeAsNeeded();
     })
   }
